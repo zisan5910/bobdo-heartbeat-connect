@@ -58,7 +58,7 @@ const FindDonor = () => {
       <PageHeader 
         icon={Search} 
         title="ডোনার খুঁজুন" 
-        description="জরুরি রক্তের প্রয়োজনে ফেসবুক গ্রুপে পোস্ট করুন"
+        subtitle="জরুরি রক্তের প্রয়োজনে ফেসবুক গ্রুপে পোস্ট করুন"
       />
 
       <button

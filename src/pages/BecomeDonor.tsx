@@ -42,8 +42,9 @@ const BecomeDonor = () => {
       <PageHeader 
         icon={UserPlus} 
         title="ডোনার হন" 
-        description="রক্তদান করে জীবন বাঁচান"
-        iconBgColor="bg-pink-50"
+        subtitle="রক্তদান করে জীবন বাঁচান"
+        iconBgColor="bg-green-50"
+        iconColor="text-green-500"
       />
 
       <a

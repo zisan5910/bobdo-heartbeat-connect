@@ -1,4 +1,5 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Users } from "lucide-react";
+import PageHeader from "@/components/shared/PageHeader";
 
 const qualifications = [
   "বয়স ১৬ বছরের উপরে হতে হবে",
@@ -53,12 +54,13 @@ const volunteerRoles = [
 const Volunteer = () => {
   return (
     <div className="px-4 py-6 space-y-6 animate-fade-in">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-foreground mb-2">স্বেচ্ছাসেবক হন</h1>
-        <p className="text-muted-foreground">
-          মানবসেবায় যোগ দিন
-        </p>
-      </div>
+      <PageHeader
+        icon={Users}
+        title="স্বেচ্ছাসেবক হন"
+        subtitle="মানবসেবায় যোগ দিন"
+        iconBgColor="bg-blue-50"
+        iconColor="text-blue-500"
+      />
 
       <a
         href="https://docs.google.com/forms/d/1r6AHUr2biiREYTnF-Bqb0eK9YINEyPbAk52dqmMcLvc/viewform?edit_requested=true"
