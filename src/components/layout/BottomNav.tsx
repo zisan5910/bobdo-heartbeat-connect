@@ -1,46 +1,43 @@
 import { Link, useLocation } from "react-router-dom";
 import { Home, Search, AlertCircle, Info } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Home", bengali: "হোম", path: "/", icon: Home },
-  { name: "Find Donor", bengali: "ডোনার খুঁজুন", path: "/find-donor", icon: Search },
-  { name: "Emergency", bengali: "জরুরি", path: "/emergency", icon: AlertCircle },
-  { name: "About", bengali: "আমাদের সম্পর্কে", path: "/about", icon: Info },
+  { path: "/", icon: Home, label: "Home" },
+  { path: "/find-donor", icon: Search, label: "Find Donor" },
+  { path: "/emergency", icon: AlertCircle, label: "Emergency" },
+  { path: "/about", icon: Info, label: "About" },
 ];
 
 const BottomNav = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg safe-bottom">
-      <div className="flex items-center justify-around h-16 max-w-lg mx-auto">
-        {navItems.map((item) => {
-          const isActive = location.pathname === item.path;
-          const Icon = item.icon;
-
-          return (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={cn(
-                "flex flex-col items-center justify-center flex-1 h-full native-touch transition-all duration-200",
-                isActive ? "text-primary" : "text-muted-foreground"
-              )}
+    <nav className="bottom-nav h-16 flex items-center justify-around px-2">
+      {navItems.map((item) => {
+        const isActive = location.pathname === item.path;
+        const Icon = item.icon;
+        
+        return (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`flex flex-col items-center justify-center py-2 px-4 rounded-xl transition-all duration-200 ${
+              isActive
+                ? "text-primary"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <div
+              className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-200 ${
+                isActive ? "bg-primary/10" : ""
+              }`}
             >
-              <div
-                className={cn(
-                  "flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200",
-                  isActive && "bg-primary/10 scale-110"
-                )}
-              >
-                <Icon className={cn("w-5 h-5", isActive && "animate-heartbeat")} />
-              </div>
-              <span className="text-[10px] font-medium mt-0.5">{item.name}</span>
-            </Link>
-          );
-        })}
-      </div>
+              <Icon className={`w-5 h-5 ${isActive ? "text-primary" : ""}`} />
+            </div>
+            <span className="text-xs mt-0.5 font-medium">{item.label}</span>
+          </Link>
+        );
+      })}
     </nav>
   );
 };
