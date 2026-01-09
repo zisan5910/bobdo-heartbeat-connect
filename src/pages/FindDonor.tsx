@@ -73,7 +73,7 @@ const FindDonor = () => {
         ) : (
           <>
             <Copy className="w-5 h-5" />
-            কপি করুন ও গ্রুপে পোস্ট করুন
+            গ্রুপে পোস্ট করুন
             <ExternalLink className="w-4 h-4" />
           </>
         )}
