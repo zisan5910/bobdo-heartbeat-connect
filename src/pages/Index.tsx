@@ -1,6 +1,7 @@
 import HeroSection from "@/components/home/HeroSection";
 import SocialLinks from "@/components/home/SocialLinks";
 import MenuGrid from "@/components/home/MenuGrid";
+import StatsSection from "@/components/home/StatsSection";
 
 const Index = () => {
   return (
@@ -9,7 +10,15 @@ const Index = () => {
       
       <div className="space-y-6 py-6">
         <SocialLinks />
+        
+        {/* Section Title */}
+        <div className="px-4">
+          <h2 className="text-lg font-bold text-foreground">সেবাসমূহ</h2>
+        </div>
+        
         <MenuGrid />
+        
+        <StatsSection />
       </div>
     </div>
   );
