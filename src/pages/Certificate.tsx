@@ -1,4 +1,5 @@
 import { ExternalLink, Award } from "lucide-react";
+import PageHeader from "@/components/shared/PageHeader";
 
 const certificates = [
   {
@@ -38,12 +39,13 @@ const applicationProcess = [
 const Certificate = () => {
   return (
     <div className="px-4 py-6 space-y-6 animate-fade-in">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-foreground mb-2">সার্টিফিকেট</h1>
-        <p className="text-muted-foreground">
-          আপনার অবদানের স্বীকৃতি
-        </p>
-      </div>
+      <PageHeader
+        icon={Award}
+        title="সার্টিফিকেট"
+        subtitle="আপনার অবদানের স্বীকৃতি"
+        iconBgColor="bg-amber-50"
+        iconColor="text-amber-500"
+      />
 
       {/* Certificate Types */}
       <div className="space-y-4">

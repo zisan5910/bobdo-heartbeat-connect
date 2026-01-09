@@ -13,7 +13,7 @@ const Index = () => {
         
         {/* Section Title */}
         <div className="px-4">
-          <h2 className="text-lg font-bold text-foreground">সেবাসমূহ</h2>
+          <h2 className="text-lg font-bold text-foreground">আমাদের সেবা</h2>
         </div>
         
         <MenuGrid />

@@ -1,6 +1,7 @@
-import { ExternalLink, Copy, Check } from "lucide-react";
+import { ExternalLink, Copy, Check, Heart } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import PageHeader from "@/components/shared/PageHeader";
 
 const paymentMethods = [
   { name: "বিকাশ", number: "01722528164", color: "bg-pink-500" },
@@ -40,12 +41,13 @@ const Donation = () => {
 
   return (
     <div className="px-4 py-6 space-y-6 animate-fade-in">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-foreground mb-2">অনুদান</h1>
-        <p className="text-muted-foreground">
-          আপনার অনুদান জীবন বাঁচাতে সাহায্য করে
-        </p>
-      </div>
+      <PageHeader
+        icon={Heart}
+        title="অনুদান"
+        subtitle="আপনার অনুদান জীবন বাঁচাতে সাহায্য করে"
+        iconBgColor="bg-pink-50"
+        iconColor="text-pink-400"
+      />
 
       {/* Payment Methods */}
       <div className="space-y-3">
