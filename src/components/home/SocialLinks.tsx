@@ -4,25 +4,21 @@ const socialLinks = [
   {
     href: "https://www.facebook.com/bobdo.official",
     icon: Facebook,
-    label: "পেজ",
-    color: "text-blue-600",
+    color: "text-red-500",
   },
   {
     href: "https://www.facebook.com/groups/BOBO.BD",
     icon: Users,
-    label: "গ্রুপ",
-    color: "text-indigo-600",
+    color: "text-red-500",
   },
   {
     href: "mailto:bobdo.bd@gmail.com",
     icon: Mail,
-    label: "ইমেইল",
     color: "text-red-500",
   },
   {
     href: "https://www.youtube.com/@BOBDO",
     icon: Youtube,
-    label: "ইউটিউব",
     color: "text-red-600",
   },
 ];
