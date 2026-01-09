@@ -4,22 +4,18 @@ const socialLinks = [
   {
     href: "https://www.facebook.com/bobdo.official",
     icon: Facebook,
-    color: "text-red-500",
   },
   {
     href: "https://www.facebook.com/groups/BOBO.BD",
     icon: Users,
-    color: "text-red-500",
   },
   {
     href: "mailto:bobdo.bd@gmail.com",
     icon: Mail,
-    color: "text-red-500",
   },
   {
     href: "https://www.youtube.com/@BOBDO",
     icon: Youtube,
-    color: "text-red-600",
   },
 ];
 
@@ -37,8 +33,7 @@ const SocialLinks = () => {
             className="flex flex-col items-center gap-1 transition-transform active:scale-95"
             aria-label={link.label}
           >
-            <Icon className={`w-7 h-7 ${link.color}`} />
-            <span className="text-xs text-muted-foreground">{link.label}</span>
+            <Icon className="w-7 h-7 text-red-600" />
           </a>
         );
       })}
