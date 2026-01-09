@@ -1,4 +1,6 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, UserPlus, CheckCircle, AlertTriangle, Heart } from "lucide-react";
+import PageHeader from "@/components/shared/PageHeader";
+import BloodGroupChart from "@/components/shared/BloodGroupChart";
 
 const conditions = [
   "বয়স ১৮ থেকে ৬০ বছরের মধ্যে হতে হবে",
@@ -8,17 +10,6 @@ const conditions = [
   "গর্ভবতী বা স্তন্যদানকারী মা নন",
   "কোনো সংক্রামক রোগ নেই",
   "মাদকাসক্ত নন",
-];
-
-const bloodGroups = [
-  { group: "A+", canGive: ["A+", "AB+"], canReceive: ["A+", "A-", "O+", "O-"] },
-  { group: "A-", canGive: ["A+", "A-", "AB+", "AB-"], canReceive: ["A-", "O-"] },
-  { group: "B+", canGive: ["B+", "AB+"], canReceive: ["B+", "B-", "O+", "O-"] },
-  { group: "B-", canGive: ["B+", "B-", "AB+", "AB-"], canReceive: ["B-", "O-"] },
-  { group: "AB+", canGive: ["AB+"], canReceive: ["সকল গ্রুপ"] },
-  { group: "AB-", canGive: ["AB+", "AB-"], canReceive: ["A-", "B-", "AB-", "O-"] },
-  { group: "O+", canGive: ["A+", "B+", "AB+", "O+"], canReceive: ["O+", "O-"] },
-  { group: "O-", canGive: ["সকল গ্রুপ"], canReceive: ["O-"] },
 ];
 
 const process = [
@@ -48,12 +39,12 @@ const benefits = [
 const BecomeDonor = () => {
   return (
     <div className="px-4 py-6 space-y-6 animate-fade-in">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-foreground mb-2">ডোনার হন</h1>
-        <p className="text-muted-foreground">
-          রক্তদান করে জীবন বাঁচান
-        </p>
-      </div>
+      <PageHeader 
+        icon={UserPlus} 
+        title="ডোনার হন" 
+        description="রক্তদান করে জীবন বাঁচান"
+        iconBgColor="bg-pink-50"
+      />
 
       <a
         href="https://docs.google.com/forms/d/e/1FAIpQLSdaQ3_aRcF8Fn306NamZZ87AKy4Vu-e5wiQ92jPNLdChWfUrA/viewform"
@@ -69,11 +60,16 @@ const BecomeDonor = () => {
 
       {/* Conditions */}
       <div className="card-native">
-        <h2 className="section-title">রক্তদানের শর্ত</h2>
-        <ul className="space-y-2">
+        <h2 className="section-title flex items-center gap-2">
+          <CheckCircle className="w-5 h-5 text-primary" />
+          রক্তদানের শর্ত
+        </h2>
+        <ul className="space-y-3">
           {conditions.map((condition, index) => (
-            <li key={index} className="flex items-start gap-2 text-foreground">
-              <span className="text-primary mt-1">✓</span>
+            <li key={index} className="flex items-start gap-3 text-foreground">
+              <span className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-green-600 text-sm">✓</span>
+              </span>
               {condition}
             </li>
           ))}
@@ -83,21 +79,7 @@ const BecomeDonor = () => {
       {/* Blood Group Chart */}
       <div className="card-native">
         <h2 className="section-title">রক্তের গ্রুপ চার্ট</h2>
-        <div className="grid grid-cols-2 gap-3">
-          {bloodGroups.map((item) => (
-            <div
-              key={item.group}
-              className="bg-muted rounded-xl p-3 text-center"
-            >
-              <span className="inline-block w-10 h-10 rounded-full bg-primary text-white font-bold flex items-center justify-center mx-auto mb-2">
-                {item.group}
-              </span>
-              <p className="text-xs text-muted-foreground">
-                দিতে পারে: {item.canGive.join(", ")}
-              </p>
-            </div>
-          ))}
-        </div>
+        <BloodGroupChart />
       </div>
 
       {/* Donation Process */}
@@ -106,11 +88,11 @@ const BecomeDonor = () => {
         <div className="space-y-4">
           {process.map((item, index) => (
             <div key={index} className="flex items-start gap-4">
-              <span className="w-8 h-8 rounded-full bg-primary text-white font-bold flex items-center justify-center flex-shrink-0">
-                {index + 1}
-              </span>
-              <div>
-                <h3 className="font-medium text-foreground">{item.step}</h3>
+              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold">{index + 1}</span>
+              </div>
+              <div className="pt-1">
+                <h3 className="font-bold text-foreground">{item.step}</h3>
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             </div>
@@ -120,11 +102,16 @@ const BecomeDonor = () => {
 
       {/* Precautions */}
       <div className="card-native">
-        <h2 className="section-title">সতর্কতা</h2>
-        <ul className="space-y-2">
+        <h2 className="section-title flex items-center gap-2">
+          <AlertTriangle className="w-5 h-5 text-amber-500" />
+          সতর্কতা
+        </h2>
+        <ul className="space-y-3">
           {precautions.map((item, index) => (
-            <li key={index} className="flex items-start gap-2 text-foreground">
-              <span className="text-amber-500">⚠</span>
+            <li key={index} className="flex items-start gap-3 text-foreground">
+              <span className="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-amber-600 text-sm">⚠</span>
+              </span>
               {item}
             </li>
           ))}
@@ -133,11 +120,16 @@ const BecomeDonor = () => {
 
       {/* Benefits */}
       <div className="card-native">
-        <h2 className="section-title">রক্তদানের উপকারিতা</h2>
-        <ul className="space-y-2">
+        <h2 className="section-title flex items-center gap-2">
+          <Heart className="w-5 h-5 text-primary" />
+          রক্তদানের উপকারিতা
+        </h2>
+        <ul className="space-y-3">
           {benefits.map((item, index) => (
-            <li key={index} className="flex items-start gap-2 text-foreground">
-              <span className="text-green-500">♥</span>
+            <li key={index} className="flex items-start gap-3 text-foreground">
+              <span className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-green-600 text-sm">♥</span>
+              </span>
               {item}
             </li>
           ))}

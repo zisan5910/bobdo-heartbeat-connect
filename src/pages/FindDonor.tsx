@@ -1,6 +1,8 @@
-import { Copy, ExternalLink, Check } from "lucide-react";
+import { Copy, ExternalLink, Check, Search, Clipboard, Heart } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import PageHeader from "@/components/shared/PageHeader";
+import BloodGroupChart from "@/components/shared/BloodGroupChart";
 
 const postTemplate = `🩸 জরুরী রক্তের প্রয়োজন 🩸
 👤 রোগী নাম:
@@ -22,17 +24,6 @@ const steps = [
   "নতুন পোস্ট লিখুন ক্লিক করুন",
   "পেস্ট করুন এবং তথ্য পূরণ করুন",
   "পোস্ট করুন",
-];
-
-const bloodGroups = [
-  { group: "A+", canGive: ["A+", "AB+"], canReceive: ["A+", "A-", "O+", "O-"] },
-  { group: "A-", canGive: ["A+", "A-", "AB+", "AB-"], canReceive: ["A-", "O-"] },
-  { group: "B+", canGive: ["B+", "AB+"], canReceive: ["B+", "B-", "O+", "O-"] },
-  { group: "B-", canGive: ["B+", "B-", "AB+", "AB-"], canReceive: ["B-", "O-"] },
-  { group: "AB+", canGive: ["AB+"], canReceive: ["সকল গ্রুপ"] },
-  { group: "AB-", canGive: ["AB+", "AB-"], canReceive: ["A-", "B-", "AB-", "O-"] },
-  { group: "O+", canGive: ["A+", "B+", "AB+", "O+"], canReceive: ["O+", "O-"] },
-  { group: "O-", canGive: ["সকল গ্রুপ"], canReceive: ["O-"] },
 ];
 
 const duties = [
@@ -64,12 +55,11 @@ const FindDonor = () => {
 
   return (
     <div className="px-4 py-6 space-y-6 animate-fade-in">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-foreground mb-2">ডোনার খুঁজুন</h1>
-        <p className="text-muted-foreground">
-          জরুরি রক্তের প্রয়োজনে ফেসবুক গ্রুপে পোস্ট করুন
-        </p>
-      </div>
+      <PageHeader 
+        icon={Search} 
+        title="ডোনার খুঁজুন" 
+        description="জরুরি রক্তের প্রয়োজনে ফেসবুক গ্রুপে পোস্ট করুন"
+      />
 
       <button
         onClick={handleCopyAndOpen}
@@ -91,14 +81,17 @@ const FindDonor = () => {
 
       {/* Steps */}
       <div className="card-native">
-        <h2 className="section-title">ফেসবুক গ্রুপে পোস্ট করার ধাপ সমূহ</h2>
+        <h2 className="section-title flex items-center gap-2">
+          <Clipboard className="w-5 h-5 text-primary" />
+          ফেসবুক গ্রুপে পোস্ট করার ধাপ সমূহ
+        </h2>
         <div className="space-y-3">
           {steps.map((step, index) => (
             <div key={index} className="flex items-start gap-3">
-              <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center justify-center flex-shrink-0">
+              <span className="w-7 h-7 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
                 {index + 1}
               </span>
-              <p className="text-foreground">{step}</p>
+              <p className="text-foreground pt-0.5">{step}</p>
             </div>
           ))}
         </div>
@@ -117,37 +110,21 @@ const FindDonor = () => {
       {/* Blood Group Chart */}
       <div className="card-native">
         <h2 className="section-title">রক্তের গ্রুপ চার্ট</h2>
-        <div className="space-y-3">
-          {bloodGroups.map((item) => (
-            <div
-              key={item.group}
-              className="bg-muted rounded-xl p-3"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-10 h-10 rounded-full bg-primary text-white font-bold flex items-center justify-center">
-                  {item.group}
-                </span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">দিতে পারে:</span>{" "}
-                {item.canGive.join(", ")}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">নিতে পারে:</span>{" "}
-                {item.canReceive.join(", ")}
-              </p>
-            </div>
-          ))}
-        </div>
+        <BloodGroupChart />
       </div>
 
       {/* Duties */}
       <div className="card-native">
-        <h2 className="section-title">রক্তদাতাদের প্রতি কর্তব্য</h2>
-        <ul className="space-y-2">
+        <h2 className="section-title flex items-center gap-2">
+          <Heart className="w-5 h-5 text-primary" />
+          রক্তদাতাদের প্রতি কর্তব্য
+        </h2>
+        <ul className="space-y-3">
           {duties.map((duty, index) => (
-            <li key={index} className="flex items-start gap-2 text-foreground">
-              <span className="text-primary">•</span>
+            <li key={index} className="flex items-start gap-3 text-foreground">
+              <span className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <span className="text-primary text-sm">✓</span>
+              </span>
               {duty}
             </li>
           ))}

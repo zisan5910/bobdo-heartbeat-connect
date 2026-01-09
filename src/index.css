@@ -37,8 +37,8 @@
     /* Custom tokens */
     --hero-gradient: linear-gradient(135deg, hsl(0, 84%, 45%) 0%, hsl(0, 70%, 55%) 100%);
     --hero-curve: ellipse(150% 100% at 50% 0%);
-    --card-shadow: 0 4px 20px -4px hsla(0, 0%, 0%, 0.1);
-    --card-shadow-hover: 0 8px 30px -4px hsla(0, 84%, 45%, 0.2);
+    --card-shadow: 0 4px 20px -4px hsla(0, 0%, 0%, 0.08);
+    --card-shadow-hover: 0 8px 30px -4px hsla(0, 84%, 45%, 0.15);
     
     --blood-red: 0 84% 45%;
     --blood-light: 0 85% 97%;
@@ -95,6 +95,11 @@
     padding-bottom: var(--safe-area-bottom);
     padding-top: var(--safe-area-top);
     overscroll-behavior: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
   }
 }
 
@@ -134,7 +139,7 @@
   }
 
   .grid-menu {
-    @apply grid gap-4;
+    @apply grid gap-4 px-4;
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -182,7 +187,7 @@
   }
 
   .menu-item-icon {
-    @apply w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-2;
+    @apply w-12 h-12 rounded-xl flex items-center justify-center mb-2;
   }
 
   .menu-item-icon svg {
@@ -217,4 +222,19 @@
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Disable text selection and copy */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+
+/* Allow clicking on links/buttons */
+a, button, input, textarea {
+  pointer-events: auto;
 }

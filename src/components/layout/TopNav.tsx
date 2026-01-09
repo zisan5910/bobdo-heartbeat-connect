@@ -1,20 +1,35 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Bell, Menu, X, Download } from "lucide-react";
+import {
+  Bell,
+  Menu,
+  X,
+  Download,
+  Home,
+  Search,
+  UserPlus,
+  Users,
+  Heart,
+  Building2,
+  Cross,
+  Award,
+  AlertCircle,
+  Info,
+} from "lucide-react";
 import { usePWAInstall } from "@/hooks/usePWAInstall";
 
 const menuItems = [
-  { path: "/", label: "হোম" },
-  { path: "/find-donor", label: "ডোনার খুঁজুন" },
-  { path: "/become-donor", label: "ডোনার হন" },
-  { path: "/volunteer", label: "স্বেচ্ছাসেবক" },
-  { path: "/donation", label: "অনুদান" },
-  { path: "/hospitals", label: "হাসপাতাল" },
-  { path: "/first-aid", label: "প্রাথমিক চিকিৎসা" },
-  { path: "/certificate", label: "সার্টিফিকেট" },
-  { path: "/notice", label: "নোটিশ" },
-  { path: "/emergency", label: "জরুরি" },
-  { path: "/about", label: "আমাদের সম্পর্কে" },
+  { path: "/", label: "হোম", icon: Home },
+  { path: "/find-donor", label: "ডোনার খুঁজুন", icon: Search },
+  { path: "/become-donor", label: "ডোনার হন", icon: UserPlus },
+  { path: "/volunteer", label: "স্বেচ্ছাসেবক", icon: Users },
+  { path: "/donation", label: "অনুদান", icon: Heart },
+  { path: "/hospitals", label: "হাসপাতাল", icon: Building2 },
+  { path: "/first-aid", label: "প্রাথমিক চিকিৎসা", icon: Cross },
+  { path: "/certificate", label: "সার্টিফিকেট", icon: Award },
+  { path: "/notice", label: "নোটিশ", icon: Bell },
+  { path: "/emergency", label: "জরুরি", icon: AlertCircle },
+  { path: "/about", label: "আমাদের সম্পর্কে", icon: Info },
 ];
 
 const TopNav = () => {
@@ -102,16 +117,22 @@ const TopNav = () => {
             </button>
           </div>
 
-          <nav className="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-80px)]">
-            {menuItems.map((item) => (
-              <button
-                key={item.path}
-                onClick={() => handleNavigation(item.path)}
-                className="w-full text-left px-4 py-3 rounded-xl hover:bg-muted transition-colors text-foreground font-medium"
-              >
-                {item.label}
-              </button>
-            ))}
+          <nav className="p-3 space-y-1 overflow-y-auto max-h-[calc(100vh-80px)]">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.path}
+                  onClick={() => handleNavigation(item.path)}
+                  className="w-full text-left px-4 py-3 rounded-xl hover:bg-muted transition-colors text-foreground font-medium flex items-center gap-3"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  {item.label}
+                </button>
+              );
+            })}
           </nav>
         </div>
       </div>

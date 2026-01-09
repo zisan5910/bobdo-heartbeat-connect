@@ -27,7 +27,7 @@ const menuItems = [
 
 const MenuGrid = () => {
   return (
-    <div className="grid-menu px-4">
+    <div className="grid-menu">
       {menuItems.map((item) => {
         const Icon = item.icon;
         return (

@@ -1,4 +1,4 @@
-import { Users, Heart, Award, Eye, Target, Shield, Handshake } from "lucide-react";
+import { Users, Heart, Award, Eye, Target, Shield, Handshake, Facebook, Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 
 const stats = [
   { value: "৭০০০০+", label: "সদস্য সংখ্যা" },
@@ -31,6 +31,33 @@ const leadership = [
 
 const coordinators = ["জয়া", "শশী", "সুলতান", "মাহি", "নাঈম", "সাব্বির"];
 const teams = ["মতিউর", "লাল সবুজ", "অকুতোভয়", "জাগ্রত", "বিজয়", "বীর সেনা"];
+
+const socialContacts = [
+  {
+    href: "https://www.facebook.com/bobdo.official",
+    icon: Facebook,
+    label: "ফেসবুক পেজ",
+    color: "bg-blue-50",
+  },
+  {
+    href: "https://www.facebook.com/groups/BOBO.BD",
+    icon: Users,
+    label: "ফেসবুক গ্রুপ",
+    color: "bg-indigo-50",
+  },
+  {
+    href: "mailto:bobdo.bd@gmail.com",
+    icon: Mail,
+    label: "ইমেইল",
+    color: "bg-red-50",
+  },
+  {
+    href: "tel:01722528164",
+    icon: Phone,
+    label: "ফোন",
+    color: "bg-green-50",
+  },
+];
 
 const About = () => {
   return (
@@ -166,9 +193,39 @@ const About = () => {
           </div>
         </div>
 
+        {/* Social Contacts */}
+        <div className="card-native">
+          <h2 className="section-title flex items-center gap-2">
+            <Phone className="w-5 h-5 text-primary" />
+            যোগাযোগ করুন
+          </h2>
+          <div className="grid grid-cols-2 gap-3">
+            {socialContacts.map((contact, index) => {
+              const Icon = contact.icon;
+              return (
+                <a
+                  key={index}
+                  href={contact.href}
+                  target={contact.href.startsWith("http") ? "_blank" : undefined}
+                  rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="flex items-center gap-3 bg-muted rounded-xl p-3 transition-all active:scale-95"
+                >
+                  <div className={`w-10 h-10 rounded-xl ${contact.color} flex items-center justify-center flex-shrink-0`}>
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-foreground">{contact.label}</span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Office Address */}
         <div className="card-native">
-          <h2 className="section-title">অফিস ঠিকানা</h2>
+          <h2 className="section-title flex items-center gap-2">
+            <MapPin className="w-5 h-5 text-primary" />
+            অফিস ঠিকানা
+          </h2>
           <p className="text-foreground mb-4">
             বি আর টি সি শপিং কমপ্লক্স ৩য় তলা, সাতমাথা, বগুড়া
           </p>
@@ -185,6 +242,32 @@ const About = () => {
               referrerPolicy="no-referrer-when-downgrade"
               title="BOBDO Office Location"
             />
+          </div>
+        </div>
+
+        {/* Developer Credits */}
+        <div className="card-native text-center">
+          <p className="text-sm text-muted-foreground mb-2">Developed by:</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            <a
+              href="https://ziptocode.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline"
+            >
+              ZiptoCode Tech Solution
+              <ExternalLink className="w-3 h-3" />
+            </a>
+            <span className="text-muted-foreground">&</span>
+            <a
+              href="https://ridoan-zisan.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-primary font-medium text-sm hover:underline"
+            >
+              Md Ridoan Mahmud Zisan
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </div>
       </div>
