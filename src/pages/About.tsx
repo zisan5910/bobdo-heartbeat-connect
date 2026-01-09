@@ -258,7 +258,6 @@ const About = () => {
               ZiptoCode Tech Solution
               <ExternalLink className="w-3 h-3" />
             </a>
-            <span className="text-muted-foreground">&</span>
             <a
               href="https://ridoan-zisan.netlify.app"
               target="_blank"
